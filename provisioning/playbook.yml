@@ -1,0 +1,25 @@
+---
+- name: configure flask application
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: update system
+      apt:
+        update_cache: yes
+    
+    - name: install python3-pip
+      apt:
+        name: python3-pip
+        state: latest
+    
+    - name: install requirements
+      shell: "python3 -m pip install -r /vagrant/requirements.txt"
+
+    # since the following call is blocking, the ansible script won't finish
+    # thus running the server has been moved to the Vagrantfile
+    
+    # - name: start flask server
+    #   shell: "python3 -m flask run --host=0.0.0.0"
+    #   environment: 
+    #     FLASK_APP: /vagrant/app.py
