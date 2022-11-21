@@ -28,7 +28,7 @@ resource "azurerm_service_plan" "sp-asj" {
 }
 
 resource "azurerm_linux_web_app" "app-asj" {
-  name = "app-dhbw-asj"
+  name = "saj"
   resource_group_name = azurerm_resource_group.rg-asj.name
   location = azurerm_resource_group.rg-asj.location
   service_plan_id = azurerm_service_plan.sp-asj.id
@@ -40,5 +40,9 @@ resource "azurerm_linux_web_app" "app-asj" {
       docker_image = "jannikspringer/devops"
       docker_image_tag = "latest"
     }
+  }
+
+  app_settings = {
+    "WEBSITES_PORT" = "5000"
   }
 }
