@@ -133,3 +133,6 @@ dmypy.json
 
 # Vagrant
 .vagrant/
+.terraform.lock.hcl
+.scannerwork/
+.terraform/
