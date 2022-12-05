@@ -12,3 +12,4 @@ def testing_app():
 @pytest.fixture()
 def client(testing_app):
     return testing_app.test_client()
+    return test_app.test_client()

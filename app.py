@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
    print('Request for index page received')
-   return render_template('index.html')
+   return render_template('index.html', welcome_message = generate_welcome_message())
 
 @app.route('/favicon.ico')
 def favicon():
@@ -26,6 +26,12 @@ def hello():
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
 
+def generate_welcome_message():
+    return "Welcome to DHBW"
+
+def add (x, y):
+    """the sole purpose of this function is to be unit-tested"""
+    return x + y
 
 if __name__ == '__main__':
    app.run()
